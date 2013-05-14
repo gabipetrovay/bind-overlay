@@ -3,7 +3,7 @@
     "owner": "gabipetrovay",
     "name": "bind-overlay",
     "dependencies": [
-        "/main.js",
+        "/overlay.js",
         "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js",
         "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js",
         "github/jillix/bind/v0.1.0",
