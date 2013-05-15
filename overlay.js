@@ -3,14 +3,15 @@
 var Bind = require('github/jillix/bind');
 var Events = require('github/jillix/events');
 
-function processConfig(config) {
-    config.options = config.options || {};
-
-    return config;
-}
-
 module.exports = function (config) {
-    config = processConfig(config);
-    debugger;
+
+    var self = this;
+
+    // process the event configuration
+    Events.call(this, config);
+
+    this.show = function(event, miid) {
+        $('.modal', self.dom).modal();
+    };
 };
 
