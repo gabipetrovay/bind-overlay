@@ -12,6 +12,8 @@ module.exports = function (config) {
 
     this.show = function(event, miid) {
         $('.modal', self.dom).modal();
+
+        M($('.modal-body', seld.dom), 'content');
     };
 };
 
