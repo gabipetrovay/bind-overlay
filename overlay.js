@@ -11,7 +11,12 @@ module.exports = function (config) {
     // process the event configuration
     Events.call(self, config);
 
-    self.show = function(event, miid) {
+    self.show = function(miid) {
+
+        if (!miid) {
+            console.error('[' + self.miid + '] The show function must be called with an miid as parameter');
+            return;
+        }
 
         var body = $('.' + config.classes.body, self.dom);
         var waiter = $('.' + config.classes.waiter, self.dom);
@@ -39,13 +44,11 @@ module.exports = function (config) {
             // first empty the body (from previous load)
             body.empty();
             // start loading the module
-            setTimeout(function() {
-                M(body.get(0), 'content', function() {
-                    waiter.hide();
-                    body.show();
-                    actionButtons.removeClass(config.classes.disabled);
-                });
-            }, 2000);
+            M(body.get(0), miid, function() {
+                waiter.hide();
+                body.show();
+                actionButtons.removeClass(config.classes.disabled);
+            });
         }
 
         // now show the overlay modal
