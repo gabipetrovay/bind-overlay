@@ -7,11 +7,14 @@ module.exports = function (config) {
 
     var config = processConfig(config);
     var self = this;
+    var successEvent;
 
     // process the event configuration
     Events.call(self, config);
 
-    self.show = function(miid) {
+    self.show = function(miid, onSuccessEvent, dataContext) {
+
+        successEvent = onSuccessEvent;
 
         if (!miid) {
             console.error('[' + self.miid + '] The show function must be called with an miid as parameter');
@@ -44,7 +47,7 @@ module.exports = function (config) {
             // first empty the body (from previous load)
             body.empty();
             // start loading the module
-            M(body.get(0), miid, function() {
+            M(body.get(0), miid, dataContext, function() {
                 waiter.hide();
                 body.show();
                 actionButtons.removeClass(config.classes.disabled);
@@ -61,7 +64,7 @@ module.exports = function (config) {
 
     self.yes = function() {
         self.hide();
-        self.emit('yes');
+        self.emit(successEvent);
     };
 
     self.no = function() {
@@ -124,4 +127,3 @@ function processConfig(config) {
 
     return config;
 }
-
