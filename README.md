@@ -7,3 +7,4 @@ Overlay module for bind
 
 ### dev
  - New version of the Bootstrap js.
+ - Removed body emptying.

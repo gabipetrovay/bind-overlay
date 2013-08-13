@@ -44,8 +44,6 @@ module.exports = function (config) {
 
         // only if we find the body
         if (body.get(0)) {
-            // first empty the body (from previous load)
-            body.empty();
             // start loading the module
             M(body.get(0), miid, dataContext, function() {
                 waiter.hide();
